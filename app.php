@@ -6,9 +6,12 @@ namespace PHPAnt\TestTheme;
  * App Name: Test Theme
  * App Description: This is a short, proof of concept app that shows the basics of creating theme apps for PHP-Ant.
  * App Version: 1.0
- * App Action: cli-load-grammar -> loadTestTheme @ 90
- * App Action: cli-init         -> declareMySelf  @ 50
- * App Action: cli-command      -> processCommand @ 50
+ * App Action: cli-load-grammar   -> loadTestTheme     @ 90
+ * App Action: cli-init           -> declareMySelf     @ 50
+ * App Action: cli-command        -> processCommand    @ 50
+ * App Action: include-navigation -> includeNavigation @ 50
+ * App Action: show-dashboard     -> showDashboard     @ 50
+ * App Action: include-footer     -> includeFooter     @ 50
  */
 
  /**
@@ -115,5 +118,23 @@ class TestTheme extends \PHPAnt\Core\AntApp implements \PHPAnt\Core\AppInterface
         return ['success' => true];
     }
 
+    function includeNavigation($args) {
+        echo '<a href="/login/">Login</a>';
+        echo '<a href="/logout/">Logout</a>';
 
+        return ['success' => true];
+    }
+
+    function showDashboard($args) {
+        echo "<h1>Command Object Info:</h1>";
+        echo "<pre>"; var_dump($args); echo "</pre>";
+        
+        return ['success' => true];
+    }
+
+    function includeFooter($args) {
+        echo "<p>Footer goes here</p>";
+        return ['success' => true];
+        
+    }
 }
